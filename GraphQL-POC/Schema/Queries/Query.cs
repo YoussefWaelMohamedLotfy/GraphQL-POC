@@ -1,5 +1,6 @@
 ﻿using GraphQL_POC.Data;
 using GraphQL_POC.Schema.Filters;
+using GraphQL_POC.Schema.Sorters;
 using GraphQL_POC.Services.Courses;
 
 namespace GraphQL_POC.Schema.Queries;
@@ -28,6 +29,7 @@ public class Query
     [UseDbContext(typeof(SchoolDbContext))]
     [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10)]
     [UseFiltering(typeof(CourseFilterType))]
+    [UseSorting(typeof(CourseSortType))]
     public IQueryable<CourseType> GetPaginatedCourses([ScopedService] SchoolDbContext context)
     {
         return context.Courses.Select(c => new CourseType
