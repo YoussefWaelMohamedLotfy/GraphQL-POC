@@ -16,16 +16,12 @@ public sealed class CourseRepository
     public async Task<IEnumerable<CourseDTO>> GetAll()
     {
         return await _context.Courses
-            .Include(c => c.Instructor)
-            .Include(c => c.Students)
             .ToListAsync();
     }
 
     public async Task<CourseDTO> GetById(Guid id)
     {
         return await _context.Courses
-            .Include(c => c.Instructor)
-            .Include(c => c.Students)
             .FirstOrDefaultAsync(c => c.Id == id);
     }
 

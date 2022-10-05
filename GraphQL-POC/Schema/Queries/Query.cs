@@ -19,13 +19,7 @@ public class Query
             Id = c.Id,
             Name = c.Name,
             Subject = c.Subject,
-            Instructor = new()
-            {
-                Id = c.Instructor.Id,
-                FirstName = c.Instructor.FirstName,
-                LastName = c.Instructor.LastName,
-                Salary = c.Instructor.Salary
-            }
+            InstructorId = c.InstructorId
         });
     }
 
@@ -37,13 +31,7 @@ public class Query
             Id = courseDTO.Id,
             Name = courseDTO.Name,
             Subject = courseDTO.Subject,
-            Instructor = new()
-            {
-                Id = courseDTO.Instructor.Id,
-                FirstName = courseDTO.Instructor.FirstName,
-                LastName = courseDTO.Instructor.LastName,
-                Salary = courseDTO.Instructor.Salary
-            }
+            InstructorId = courseDTO.InstructorId
         };
     }
 
