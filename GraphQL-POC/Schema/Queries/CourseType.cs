@@ -1,4 +1,6 @@
-﻿namespace GraphQL_POC.Schema.Queries;
+﻿using GraphQL_POC.Models;
+
+namespace GraphQL_POC.Schema.Queries;
 
 public class CourseType
 {
@@ -12,11 +14,4 @@ public class CourseType
     public InstructorType Instructor { get; set; }
 
     public IEnumerable<StudentType> Students { get; set; }
-}
-
-public enum Subject
-{
-    Mathematics,
-    Science,
-    History
 }

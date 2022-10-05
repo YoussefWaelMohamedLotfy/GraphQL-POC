@@ -1,8 +1,8 @@
 ﻿using GraphQL_POC.Models;
 
-namespace GraphQL_POC.Schema.Mutations;
+namespace GraphQL_POC.DTOs;
 
-public class CourseResult
+public class CourseDTO
 {
     public Guid Id { get; set; }
 
@@ -11,4 +11,8 @@ public class CourseResult
     public Subject Subject { get; set; }
 
     public Guid InstructorId { get; set; }
+
+    public InstructorDTO Instructor { get; set; }
+
+    public IEnumerable<StudentDTO> Students { get; set; }
 }

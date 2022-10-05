@@ -1,4 +1,4 @@
-﻿using GraphQL_POC.Schema.Queries;
+﻿using GraphQL_POC.Models;
 
 namespace GraphQL_POC.Schema.Mutations;
 
