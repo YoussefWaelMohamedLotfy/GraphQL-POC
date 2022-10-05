@@ -1,6 +1,8 @@
-﻿using GraphQL_POC.DTOs;
+﻿using AppAny.HotChocolate.FluentValidation;
+using GraphQL_POC.DTOs;
 using GraphQL_POC.Schema.Subscriptions;
 using GraphQL_POC.Services.Courses;
+using GraphQL_POC.Validators;
 using HotChocolate.Subscriptions;
 
 namespace GraphQL_POC.Schema.Mutations;
@@ -14,7 +16,8 @@ public class Mutation
         _courseRepository = courseRepository;
     }
 
-    public async Task<CourseResult> CreateCourse(CourseInputType courseInput, [Service] ITopicEventSender topicEventSender)
+    public async Task<CourseResult> CreateCourse([UseFluentValidation] CourseInputType courseInput,
+                                                 [Service] ITopicEventSender topicEventSender)
     {
         CourseDTO courseDTO = new()
         {
@@ -37,7 +40,9 @@ public class Mutation
         return course;
     }
 
-    public async Task<CourseResult> UpdateCourse(Guid id, CourseInputType courseInput, [Service] ITopicEventSender topicEventSender)
+    public async Task<CourseResult> UpdateCourse(Guid id,
+                                                 [UseFluentValidation] CourseInputType courseInput,
+                                                 [Service] ITopicEventSender topicEventSender)
     {
         CourseDTO courseDTO = new()
         {
