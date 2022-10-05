@@ -1,4 +1,5 @@
 ﻿using GraphQL_POC.Data;
+using GraphQL_POC.Schema.Filters;
 using GraphQL_POC.Services.Courses;
 
 namespace GraphQL_POC.Schema.Queries;
@@ -12,7 +13,6 @@ public class Query
         _courseRepository = courseRepository;
     }
 
-    [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10)]
     public async Task<IEnumerable<CourseType>> GetCourses()
     {
         var courseDTOs = await _courseRepository.GetAll();
@@ -27,6 +27,7 @@ public class Query
 
     [UseDbContext(typeof(SchoolDbContext))]
     [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10)]
+    [UseFiltering(typeof(CourseFilterType))]
     public IQueryable<CourseType> GetPaginatedCourses([ScopedService] SchoolDbContext context)
     {
         return context.Courses.Select(c => new CourseType

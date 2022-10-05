@@ -12,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
-    .AddSubscriptionType<Subscription>();
+    .AddSubscriptionType<Subscription>()
+    .AddFiltering();
 
 builder.Services.AddInMemorySubscriptions();
 
