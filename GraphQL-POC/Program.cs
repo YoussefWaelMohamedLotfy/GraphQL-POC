@@ -13,8 +13,12 @@ builder.Services.AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
     .AddSubscriptionType<Subscription>()
+    .AddType<CourseType>()
+    .AddType<InstructorType>()
+    .AddTypeExtension<CourseQuery>()
     .AddFiltering()
-    .AddSorting();
+    .AddSorting()
+    .AddProjections();
 
 builder.Services.AddInMemorySubscriptions();
 

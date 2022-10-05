@@ -3,7 +3,7 @@ using GraphQL_POC.Models;
 
 namespace GraphQL_POC.Schema.Queries;
 
-public class CourseType
+public class CourseType : ISearchResultType
 {
     public Guid Id { get; set; }
 
@@ -11,6 +11,7 @@ public class CourseType
 
     public Subject Subject { get; set; }
 
+    [IsProjected(true)]
     public Guid InstructorId { get; set; }
 
     [GraphQLNonNullType]
