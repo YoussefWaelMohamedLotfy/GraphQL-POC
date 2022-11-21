@@ -8,9 +8,12 @@ using GraphQL_POC.Schema.Subscriptions;
 using GraphQL_POC.Services.Courses;
 using GraphQL_POC.Services.Instructors;
 using GraphQL_POC.Validators;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.WebHost.ConfigureKestrel(o => o.ConfigureEndpointDefaults(e => e.Protocols = HttpProtocols.Http1AndHttp2AndHttp3));
 
 builder.Services.AddValidatorsFromAssemblyContaining<CourseTypeInputValidator>();
 
